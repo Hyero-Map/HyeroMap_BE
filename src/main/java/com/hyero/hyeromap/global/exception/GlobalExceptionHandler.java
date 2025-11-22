@@ -1,12 +1,14 @@
 package com.hyero.hyeromap.global.exception;
 
 import java.net.URI;
+import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -31,6 +33,36 @@ public class GlobalExceptionHandler {
         problemDetail.setInstance(URI.create(request.getRequestURI()));
 
         return new ResponseEntity<>(problemDetail, ex.getErrorCode().getHttpStatus());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ProblemDetail> handleMethodArgumentNotValidException(
+            HttpServletRequest request,
+            MethodArgumentNotValidException ex
+    ) {
+        ErrorCode errorCode = ErrorCode.VALIDATION_FAILED;
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                errorCode.getHttpStatus(),
+                errorCode.getMessage()
+        );
+
+        problemDetail.setTitle(errorCode.getCode());
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+
+        List<ValidationError> validationErrors = ex.getBindingResult().getFieldErrors()
+                .stream()
+                .map(error -> {
+                    Object rejected = error.getRejectedValue();
+                    return new ValidationError(
+                            error.getField(),
+                            rejected == null ? "" : rejected.toString(),
+                            error.getDefaultMessage()
+                    );
+                })
+                .toList();
+        problemDetail.setProperty("validationErrors", validationErrors);
+
+        return new ResponseEntity<>(problemDetail, errorCode.getHttpStatus());
     }
 
     @ExceptionHandler(Exception.class)

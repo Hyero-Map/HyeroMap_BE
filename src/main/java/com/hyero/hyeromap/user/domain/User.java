@@ -56,4 +56,15 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserFavoriteStore> favoriteStores = new ArrayList<>();
 
+    private User(String name, String phone, String password) {
+        this.name = name;
+        this.phone = phone;
+        this.password = password;
+    }
+
+    public static User create(String name, String phone, String password) {
+
+        return new User(name, phone, password);
+    }
+
 }
