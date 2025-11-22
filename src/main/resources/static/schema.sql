@@ -18,7 +18,7 @@ CREATE TABLE users (
 -- Menus
 CREATE TABLE menus (
                        menu_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-                       menu_name VARCHAR(50) NOT NULL
+                       menu_name VARCHAR(50) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 -- Stores
