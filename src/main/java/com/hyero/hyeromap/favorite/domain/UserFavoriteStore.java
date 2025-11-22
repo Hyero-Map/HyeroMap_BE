@@ -1,4 +1,4 @@
-package com.hyero.hyeromap.user.domain;
+package com.hyero.hyeromap.favorite.domain;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import com.hyero.hyeromap.store.domain.Store;
+import com.hyero.hyeromap.user.domain.User;
 
 @Entity
 @Getter
@@ -52,4 +53,13 @@ public class UserFavoriteStore {
     @Column(name = "registered_at", nullable = false, updatable = false)
     private LocalDateTime registeredAt;
 
+    private UserFavoriteStore(User user, Store store) {
+        this.user = user;
+        this.store = store;
+    }
+
+    public static UserFavoriteStore of(User user, Store store) {
+
+        return new UserFavoriteStore(user, store);
+    }
 }
