@@ -3,6 +3,7 @@ package com.hyero.hyeromap.store.Service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,7 @@ public class StoreService {
 
     private final StoreRepository storeRepository;
 
+    @Transactional(readOnly = true)
     public List<StoreSimpleResponse> getAllStores() {
         List<Store> stores = storeRepository.findAll();
 
@@ -27,6 +29,7 @@ public class StoreService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public StoreDetailResponse getStoreDetail(Long storeId) {
         Store store = storeRepository.findWithMenuById(storeId)
                 .orElseThrow(() -> new BusinessException(ErrorCode.STORE_NOT_FOUND, storeId));
