@@ -21,6 +21,9 @@ spring:
         options:
           model: gpt-4o-mini
 
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+
 springdoc:
   api-docs:
     path: /api-docs
