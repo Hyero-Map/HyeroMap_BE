@@ -5,10 +5,9 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,6 +19,8 @@ import org.locationtech.jts.geom.Point;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import com.hyero.global.converter.StoreCodeConverter;
 
 @Entity
 @Getter
@@ -38,7 +39,7 @@ public class Store {
     @Column(name = "store_phone", length = 255, nullable = false)
     private String phone;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = StoreCodeConverter.class)
     @Column(name = "store_code", length = 20, nullable = false)
     private StoreCode storeCode;
 
