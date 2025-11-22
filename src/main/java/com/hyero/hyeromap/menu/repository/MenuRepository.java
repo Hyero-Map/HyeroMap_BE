@@ -13,4 +13,5 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
 
     @Query("SELECT DISTINCT m.name FROM Menu m")
     List<String> findAllDistinctMenuNames();
+
 }

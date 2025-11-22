@@ -2,7 +2,6 @@ package com.hyero.hyeromap.store.dto;
 
 import java.time.LocalTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hyero.hyeromap.store.domain.DiscountInfo;
@@ -36,7 +35,7 @@ public record StoreDetailResponse(
 
                 store.getStoreMenus().stream()
                         .map(sm -> sm.getMenu().getName())
-                        .collect(Collectors.toList())
+                        .toList()
         );
     }
 
