@@ -1,5 +1,6 @@
 -- 초기화용
 SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE users;
 TRUNCATE TABLE store_menus;
 TRUNCATE TABLE menus;
 TRUNCATE TABLE stores;
@@ -5550,7 +5551,6 @@ INSERT INTO store_menus (store_id, menu_id) SELECT 1049, menu_id FROM menus WHER
 INSERT INTO store_menus (store_id, menu_id) SELECT 1051, menu_id FROM menus WHERE menu_name IN ('연어초밥');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1060, menu_id FROM menus WHERE menu_name IN ('연어초밥', '광어초밥', '참게');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1070, menu_id FROM menus WHERE menu_name IN ('매운탕');
-INSERT INTO store_menus (store_id, menu_id) SELECT 1080, menu_id FROM menus WHERE menu_name IN ('설렁탕', '갈비탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1106, menu_id FROM menus WHERE menu_name IN ('설렁탕', '갈비탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1110, menu_id FROM menus WHERE menu_name IN ('뼈해장국', '수육백반');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1111, menu_id FROM menus WHERE menu_name IN ('백숙', '삼계탕');
@@ -5682,7 +5682,7 @@ INSERT INTO store_menus (store_id, menu_id) SELECT 1612, menu_id FROM menus WHER
 INSERT INTO store_menus (store_id, menu_id) SELECT 1613, menu_id FROM menus WHERE menu_name IN ('장어구이', '장어탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1614, menu_id FROM menus WHERE menu_name IN ('짜장면', '깐풍기');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1615, menu_id FROM menus WHERE menu_name IN ('칼국수', '만두');
-INSERT INTO store_menus (store_id, menu_id) SELECT 1616, menu_id FROM menus WHERE menu_name IN ('시락국', '된장찌개', '순두부찌개', '콩국수', '돼지두루추기');
+INSERT INTO store_menus (store_id, menu_id) SELECT 1616, menu_id FROM menus WHERE menu_name IN ('시락국', '된장찌개', '순두부찌개', '콩국수', '돼지두루치기');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1617, menu_id FROM menus WHERE menu_name IN ('오리탕', '오리고기');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1618, menu_id FROM menus WHERE menu_name IN ('다슬기');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1619, menu_id FROM menus WHERE menu_name IN ('밀면', '메밀국수');
@@ -5710,7 +5710,7 @@ INSERT INTO store_menus (store_id, menu_id) SELECT 1667, menu_id FROM menus WHER
 INSERT INTO store_menus (store_id, menu_id) SELECT 1668, menu_id FROM menus WHERE menu_name IN ('매운탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1669, menu_id FROM menus WHERE menu_name IN ('매운탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1670, menu_id FROM menus WHERE menu_name IN ('짜장면', '탕수육');
-INSERT INTO store_menus (store_id, menu_id) SELECT 1671, menu_id FROM menus WHERE menu_name IN ('제육볶음', '돼지두루추기');
+INSERT INTO store_menus (store_id, menu_id) SELECT 1671, menu_id FROM menus WHERE menu_name IN ('제육볶음', '돼지두루치기');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1672, menu_id FROM menus WHERE menu_name IN ('매운탕');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1673, menu_id FROM menus WHERE menu_name IN ('삼계탕', '백숙');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1674, menu_id FROM menus WHERE menu_name IN ('장어탕', '장어구이');
@@ -5721,3 +5721,7 @@ INSERT INTO store_menus (store_id, menu_id) SELECT 1678, menu_id FROM menus WHER
 INSERT INTO store_menus (store_id, menu_id) SELECT 1679, menu_id FROM menus WHERE menu_name IN ('중화비빔밥', '짜장면');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1680, menu_id FROM menus WHERE menu_name IN ('제육볶음', '된장찌개');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1681, menu_id FROM menus WHERE menu_name IN ('된장찌개', '순두부찌개', '해물순두부찌개');
+
+-- users
+INSERT INTO users (user_name, user_phone, user_pw, created_at, updated_at)
+VALUES ('홍길동', '010-1234-5678', 'hashed_password_123', NOW(), NOW());
