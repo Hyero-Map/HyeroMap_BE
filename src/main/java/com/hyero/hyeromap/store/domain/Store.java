@@ -20,7 +20,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import com.hyero.global.converter.StoreCodeConverter;
+import com.hyero.hyeromap.global.converter.StoreCodeConverter;
 
 @Entity
 @Getter

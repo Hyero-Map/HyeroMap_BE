@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
-import com.hyero.global.exception.BusinessException;
-import com.hyero.global.exception.ErrorCode;
+import com.hyero.hyeromap.global.exception.BusinessException;
+import com.hyero.hyeromap.global.exception.ErrorCode;
 import com.hyero.hyeromap.store.Repository.StoreRepository;
 import com.hyero.hyeromap.store.domain.Store;
 import com.hyero.hyeromap.store.dto.StoreDetailResponse;

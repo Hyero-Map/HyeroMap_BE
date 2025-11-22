@@ -1,4 +1,4 @@
-package com.hyero.global.converter;
+package com.hyero.hyeromap.global.converter;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

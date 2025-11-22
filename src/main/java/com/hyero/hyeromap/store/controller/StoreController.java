@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-import com.hyero.global.dto.Result;
+import com.hyero.hyeromap.global.dto.Result;
 import com.hyero.hyeromap.store.Service.StoreService;
 import com.hyero.hyeromap.store.dto.StoreDetailResponse;
 import com.hyero.hyeromap.store.dto.StoreSimpleResponse;

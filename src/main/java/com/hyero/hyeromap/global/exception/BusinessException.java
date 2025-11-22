@@ -1,4 +1,4 @@
-package com.hyero.global.exception;
+package com.hyero.hyeromap.global.exception;
 
 import lombok.Getter;
 
