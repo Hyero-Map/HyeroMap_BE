@@ -10,6 +10,7 @@ import com.hyero.hyeromap.global.exception.BusinessException;
 import com.hyero.hyeromap.global.exception.ErrorCode;
 import com.hyero.hyeromap.user.domain.User;
 import com.hyero.hyeromap.user.dto.SignUpRequest;
+import com.hyero.hyeromap.user.dto.UserDeleteRequest;
 import com.hyero.hyeromap.user.dto.UserUpdatePasswordRequest;
 import com.hyero.hyeromap.user.repository.UserRepository;
 
@@ -36,12 +37,24 @@ public class UserService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
 
         if (!bCryptPasswordEncoder.matches(request.currentPassword(), user.getPassword())) {
-            throw new BusinessException(ErrorCode.VALIDATION_FAILED);
+            throw new BusinessException(ErrorCode.CURRENT_PASSWORD_MISMATCH);
         }
 
         String encodedNewPassword = bCryptPasswordEncoder.encode(request.newPassword());
         user.updatePassword(encodedNewPassword);
 
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void deleteUser(Long userId, UserDeleteRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+
+        if (!bCryptPasswordEncoder.matches(request.password(), user.getPassword())) {
+            throw new BusinessException(ErrorCode.CURRENT_PASSWORD_MISMATCH);
+        }
+
+        userRepository.delete(user);
     }
 }

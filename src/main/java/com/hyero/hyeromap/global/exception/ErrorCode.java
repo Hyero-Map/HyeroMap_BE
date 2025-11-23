@@ -11,6 +11,7 @@ public enum ErrorCode {
 
     // 4XX
     VALIDATION_FAILED("VALIDATION_FAILED", "유효성 검사에 실패했습니다.", HttpStatus.BAD_REQUEST),
+    CURRENT_PASSWORD_MISMATCH("CURRENT_PASSWORD_MISMATCH", "현재 비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST),
     STORE_NOT_FOUND("STORE_NOT_FOUND", "해당 가게(Key: %s)를 찾을 수 없습니다.", HttpStatus.NOT_FOUND),
     USER_NOT_FOUND("USER_NOT_FOUND", "해당 유저(Key: %s)를 찾을 수 없습니다.", HttpStatus.NOT_FOUND),
     USER_FAVORITE_ALREADY_EXISTS("USER_FAVORITE_ALREADY_EXISTS", "이미 즐겨찾기된 가게입니다.", HttpStatus.CONFLICT),
