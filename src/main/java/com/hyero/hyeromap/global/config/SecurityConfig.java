@@ -18,6 +18,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyero.hyeromap.global.security.JWTFilter;
 import com.hyero.hyeromap.global.security.JWTUtil;
 import com.hyero.hyeromap.global.security.LoginFilter;
@@ -29,6 +30,17 @@ public class SecurityConfig {
 
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JWTUtil jwtUtil;
+    private final ObjectMapper objectMapper;
+
+    @Bean
+    public LoginFilter loginFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
+        LoginFilter loginFilter = new LoginFilter(authenticationManager, jwtUtil, objectMapper);
+        loginFilter.setFilterProcessesUrl("/login");
+        loginFilter.setUsernameParameter("userPhone");
+
+        return loginFilter;
+    }
+
 
     // 로그인 시 사용자의 인증 담당
     @Bean
@@ -78,7 +90,7 @@ public class SecurityConfig {
                 .addFilterBefore(new JWTFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class)
 
                 // 로그인 필터 추가
-                .addFilterAt(new LoginFilter(authenticationManager(), jwtUtil), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(new LoginFilter(authenticationManager(), jwtUtil, objectMapper), UsernamePasswordAuthenticationFilter.class)
 
                 // 세션을 사용하지 않음
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
