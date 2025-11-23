@@ -71,4 +71,8 @@ public class User {
         return new User(name, phone, password);
     }
 
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
 }

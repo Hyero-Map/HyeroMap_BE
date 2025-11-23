@@ -10,6 +10,7 @@ import com.hyero.hyeromap.global.exception.BusinessException;
 import com.hyero.hyeromap.global.exception.ErrorCode;
 import com.hyero.hyeromap.user.domain.User;
 import com.hyero.hyeromap.user.dto.SignUpRequest;
+import com.hyero.hyeromap.user.dto.UserUpdatePasswordRequest;
 import com.hyero.hyeromap.user.repository.UserRepository;
 
 @Service
@@ -25,8 +26,22 @@ public class UserService {
             throw new BusinessException(ErrorCode.USER_PHONE_ALREADY_EXISTS);
         }
 
-        String encodedPw = bCryptPasswordEncoder.encode(request.userPw());
-        userRepository.save(User.create(request.userName(), request.userPhone(), encodedPw));
+        String encodedPassword = bCryptPasswordEncoder.encode(request.password());
+        userRepository.save(User.create(request.userName(), request.userPhone(), encodedPassword));
     }
 
+    @Transactional
+    public void updatePassword(Long userId, UserUpdatePasswordRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+
+        if (!bCryptPasswordEncoder.matches(request.currentPassword(), user.getPassword())) {
+            throw new BusinessException(ErrorCode.VALIDATION_FAILED);
+        }
+
+        String encodedNewPassword = bCryptPasswordEncoder.encode(request.newPassword());
+        user.updatePassword(encodedNewPassword);
+
+        userRepository.save(user);
+    }
 }
