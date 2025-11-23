@@ -1,5 +1,7 @@
 package com.hyero.hyeromap.recommendation.controller;
 
+import jakarta.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +22,7 @@ public class RecommendationController {
     private final RecommendationService recommendationService;
 
     @PostMapping
-    public ResponseEntity<RecommendationResponse> recommendMenu(@RequestBody RecommendationRequest request) {
+    public ResponseEntity<RecommendationResponse> recommendMenu(@Valid @RequestBody RecommendationRequest request) {
 
         return ResponseEntity.ok(recommendationService.recommendMenu(request));
     }
