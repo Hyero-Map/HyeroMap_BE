@@ -55,7 +55,6 @@
 ### 5.3. 구현 내용 및 결과물
 <img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/fd7fdfd8-90b4-45f2-9745-e6e656bea7e9" />
 <img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/1a9f826e-7d58-4ce4-b3f8-d661ed640eff" />
-<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/c610650e-cec8-459e-8d4b-cda7600f879d" />
 <img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/c22b78b6-be73-4a3a-af51-fdd9495a753a" />
 <img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/74079860-731a-41f5-bcdb-670c30d6e618" />
 
