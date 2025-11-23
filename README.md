@@ -1,6 +1,7 @@
 # 🗺️ 혜로 - 혜로맵(HyeroMap)
 ## 1. 서비스 요약
 ### 혜로맵(HyeroMap) - 전국 경로우대 지정업소 안내 서비스 
+<img width="256" height="256" alt="image" src="https://github.com/user-attachments/assets/a3c95569-adec-4000-a0f3-464e2fd47c41" />
 - **혜(惠)** — 혜택, 배려
   - 고령자에게 실질적인 혜택을 제공한다는 의미를 포함합니다.
   - 취약계층에 대한 배려의 성격을 담아 서비스의 사회적 가치를 강조합니다.
