@@ -24,7 +24,7 @@ public class JWTUtil {
         return Jwts.parser()
                 .verifyWith(secretKey)
                 .build()
-                .parseClaimsJws(token)
+                .parseSignedClaims(token)
                 .getPayload()
                 .get("userId", Long.class);
     }
@@ -34,7 +34,7 @@ public class JWTUtil {
         return Jwts.parser()
                 .verifyWith(secretKey)
                 .build()
-                .parseClaimsJws(token)
+                .parseSignedClaims(token)
                 .getPayload()
                 .get("userPhone", String.class);
     }

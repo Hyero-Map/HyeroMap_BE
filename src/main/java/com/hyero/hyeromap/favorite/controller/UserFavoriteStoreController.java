@@ -13,14 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import com.hyero.hyeromap.favorite.service.UserFavoriteStoreService;
 import com.hyero.hyeromap.global.dto.Result;
 import com.hyero.hyeromap.global.security.CustomUserDetails;
 import com.hyero.hyeromap.store.dto.StoreDetailResponse;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/favorite")
 @RequiredArgsConstructor
@@ -34,8 +32,6 @@ public class UserFavoriteStoreController {
             @PathVariable Long storeId) {
 
         Long userId = userDetails.getUserId();
-        log.info("userId = {}", userId);
-        log.info("storeId = {}", storeId);
         userFavoriteStoreService.addFavorite(userId, storeId);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
