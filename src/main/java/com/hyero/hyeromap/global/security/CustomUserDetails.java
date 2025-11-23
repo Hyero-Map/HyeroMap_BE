@@ -20,6 +20,10 @@ public class CustomUserDetails implements UserDetails {
         return user.getId();
     }
 
+    public String getUserName() {
+        return user.getName();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
@@ -34,5 +38,5 @@ public class CustomUserDetails implements UserDetails {
     public String getUsername() {
         return user.getPhone();
     }
-    
+
 }

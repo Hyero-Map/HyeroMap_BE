@@ -57,12 +57,15 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         String accessToken = jwtUtil.createJwt(userId, userPhone, 60 * 60 * 1000L);
 
-        TokenResponse tokenResponse = new TokenResponse(accessToken);
+        LoginResponse loginResponse = new LoginResponse(
+                customUserDetails.getUserName(),
+                userPhone,
+                accessToken);
 
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
 
-        objectMapper.writeValue(res.getWriter(), tokenResponse);
+        objectMapper.writeValue(res.getWriter(), loginResponse);
     }
 
     // 로그인 실패 시 401 응답 반환
