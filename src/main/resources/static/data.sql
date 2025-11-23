@@ -1,5 +1,6 @@
 -- 초기화용
 SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE user_favorite_stores;
 TRUNCATE TABLE users;
 TRUNCATE TABLE store_menus;
 TRUNCATE TABLE menus;
@@ -5721,7 +5722,3 @@ INSERT INTO store_menus (store_id, menu_id) SELECT 1678, menu_id FROM menus WHER
 INSERT INTO store_menus (store_id, menu_id) SELECT 1679, menu_id FROM menus WHERE menu_name IN ('중화비빔밥', '짜장면');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1680, menu_id FROM menus WHERE menu_name IN ('제육볶음', '된장찌개');
 INSERT INTO store_menus (store_id, menu_id) SELECT 1681, menu_id FROM menus WHERE menu_name IN ('된장찌개', '순두부찌개', '해물순두부찌개');
-
--- users
-INSERT INTO users (user_name, user_phone, user_pw, created_at, updated_at)
-VALUES ('홍길동', '010-1234-5678', 'hashed_password_123', NOW(), NOW());

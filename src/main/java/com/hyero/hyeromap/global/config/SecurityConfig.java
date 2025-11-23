@@ -80,10 +80,8 @@ public class SecurityConfig {
 
                 // 엔드포인트별 접근 권한 설정
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/signUp", "/swagger-ui/**", "/api-docs/**").permitAll()
+                        .requestMatchers("/login", "/api/user/signUp", "/swagger-ui/**", "/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/store/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/recommendation").permitAll()
-                        .requestMatchers("/api/favorite/stores/**").authenticated()
                         .anyRequest().authenticated()) // 그 외의 요청은 인증된 사용자만 접근 가능
 
                 // JWT 필터 추가
