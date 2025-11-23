@@ -20,6 +20,15 @@ public class JWTUtil {
         secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
+    public Long getUserId(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getPayload()
+                .get("userId", Long.class);
+    }
+
     // JWT에서 userPhone 추출
     public String getUserPhone(String token) {
         return Jwts.parser()
@@ -42,8 +51,9 @@ public class JWTUtil {
     }
 
     // JWT 생성
-    public String createJwt(String userPhone, Long expiredMs) {
+    public String createJwt(Long userId, String userPhone, Long expiredMs) {
         return Jwts.builder()
+                .claim("userId", userId)
                 .claim("userPhone", userPhone)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiredMs))

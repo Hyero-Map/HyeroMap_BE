@@ -35,8 +35,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) {
         CustomUserDetails customUserDetails = (CustomUserDetails) auth.getPrincipal();
 
+        Long userId = customUserDetails.getUserId();
         String userPhone = customUserDetails.getUsername(); // getUsername(): 전화번호(Phone)를 반환하도록 구현
-        String token = jwtUtil.createJwt(userPhone, 60 * 60 * 1000L);
+        String token = jwtUtil.createJwt(userId, userPhone, 60 * 60 * 1000L);
         res.addHeader("Authorization", "Bearer " + token);
     }
 

@@ -39,9 +39,14 @@ public class JWTFilter extends OncePerRequestFilter {
                 return;
             }
 
+            Long userId = jwtUtil.getUserId(token);
             String userPhone = jwtUtil.getUserPhone(token);
 
-            User user = User.create("empty", userPhone, "N/A");
+            User user = User.builder()
+                    .id(userId)
+                    .phone(userPhone)
+                    .password("N/A")
+                    .build();
 
             CustomUserDetails customUserDetails = new CustomUserDetails(user);
             Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
