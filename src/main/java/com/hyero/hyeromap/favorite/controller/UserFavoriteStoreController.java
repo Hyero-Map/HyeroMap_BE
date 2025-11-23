@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+import com.hyero.hyeromap.favorite.dto.FavoriteStatusResponse;
 import com.hyero.hyeromap.favorite.service.UserFavoriteStoreService;
 import com.hyero.hyeromap.global.dto.Result;
 import com.hyero.hyeromap.global.security.CustomUserDetails;
@@ -56,6 +57,15 @@ public class UserFavoriteStoreController {
         Result<List<StoreDetailResponse>> result = new Result<>(responseList.size(), responseList);
 
         return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/stores/{storeId}/status")
+    public ResponseEntity<FavoriteStatusResponse> getFavoriteStatus(
+            @AuthenticationPrincipal CustomUserDetails userDetails,
+            @PathVariable Long storeId) {
+        Long userId = userDetails.getUserId();
+
+        return ResponseEntity.ok(userFavoriteStoreService.isFavorite(userId, storeId));
     }
 
 }

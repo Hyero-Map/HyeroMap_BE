@@ -18,4 +18,6 @@ public interface UserFavoriteStoreRepository extends JpaRepository<UserFavoriteS
     @EntityGraph(attributePaths = {"store"})
     List<UserFavoriteStore> findByUserId(Long userId);
 
+    boolean existsByUserIdAndStoreId(Long userId, Long storeId);
+
 }

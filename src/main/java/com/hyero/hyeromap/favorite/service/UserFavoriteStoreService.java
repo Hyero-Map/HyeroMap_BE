@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import com.hyero.hyeromap.favorite.domain.UserFavoriteStore;
+import com.hyero.hyeromap.favorite.dto.FavoriteStatusResponse;
 import com.hyero.hyeromap.favorite.repository.UserFavoriteStoreRepository;
 import com.hyero.hyeromap.global.exception.BusinessException;
 import com.hyero.hyeromap.global.exception.ErrorCode;
@@ -53,6 +54,12 @@ public class UserFavoriteStoreService {
                 .map(UserFavoriteStore::getStore)
                 .map(StoreDetailResponse::from)
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public FavoriteStatusResponse isFavorite(Long userId, Long storeId) {
+
+        return FavoriteStatusResponse.from(userFavoriteStoreRepository.existsByUserIdAndStoreId(userId, storeId));
     }
 
 }
