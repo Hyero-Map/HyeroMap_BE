@@ -53,6 +53,12 @@
 &nbsp; 식당 업종의 경우, 메뉴 데이터를 분석하고 사용자가 입력한 나이, 질환, 알레르기 등 건강 정보를 기반으로 AI가 적합한 메뉴를 추천하고 해당하는 식당을 안내하는 기능을 제공합니다. 단순한 위치 기반 업소 안내를 넘어 고령층의 실질적 건강 관리까지 연결되는 점에서 유사 서비스와의 명확한 차이점입니다.
 
 ### 5.3. 구현 내용 및 결과물
+<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/fd7fdfd8-90b4-45f2-9745-e6e656bea7e9" />
+<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/1a9f826e-7d58-4ce4-b3f8-d661ed640eff" />
+<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/c610650e-cec8-459e-8d4b-cda7600f879d" />
+<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/c22b78b6-be73-4a3a-af51-fdd9495a753a" />
+<img width="180" height="330" alt="image" src="https://github.com/user-attachments/assets/74079860-731a-41f5-bcdb-670c30d6e618" />
+
 -	**위치 기반 경로우대 업소 탐색 기능**
     -	사용자 현재 위치(GPS 기준)를 기반으로 주변 경로우대 지정업소를 지도에 시각화합니다.
     -	공공데이터포털에서 제공하는 「전국경로우대지정업소표준데이터」를 DB에 저장하고, 지도 API를 통해 실시간으로 마커(업소 위치)를 표시합니다.
