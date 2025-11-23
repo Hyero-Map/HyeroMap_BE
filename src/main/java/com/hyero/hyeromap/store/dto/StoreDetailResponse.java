@@ -1,11 +1,8 @@
 package com.hyero.hyeromap.store.dto;
 
-import java.time.LocalTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hyero.hyeromap.store.domain.DiscountInfo;
-import com.hyero.hyeromap.store.domain.OperatingHours;
 import com.hyero.hyeromap.store.domain.Store;
 
 public record StoreDetailResponse(
@@ -62,32 +59,4 @@ public record StoreDetailResponse(
         }
     }
 
-    public record TimeRange(
-            @JsonFormat(pattern = "HH:mm")
-            LocalTime start,
-
-            @JsonFormat(pattern = "HH:mm")
-            LocalTime end
-    ) {
-
-    }
-
-    public record OperatingHoursResponse(
-            TimeRange weekday,
-            TimeRange saturday,
-            TimeRange holiday
-    ) {
-
-        public static OperatingHoursResponse from(OperatingHours hours) {
-            if (hours == null) {
-                return null;
-            }
-
-            return new OperatingHoursResponse(
-                    new TimeRange(hours.getWeekdayStart(), hours.getWeekdayEnd()),
-                    new TimeRange(hours.getSaturdayStart(), hours.getSaturdayEnd()),
-                    new TimeRange(hours.getHolidayStart(), hours.getHolidayEnd())
-            );
-        }
-    }
 }

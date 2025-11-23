@@ -7,7 +7,8 @@ public record StoreSimpleResponse(
         String storeName,
         Double latitude,
         Double longitude,
-        String address
+        String address,
+        OperatingHoursResponse operatingHours
 ) {
 
     public static StoreSimpleResponse from(Store store) {
@@ -16,7 +17,8 @@ public record StoreSimpleResponse(
                 store.getName(),
                 store.getLocation().getY(),
                 store.getLocation().getX(),
-                store.getAddress()
+                store.getAddress(),
+                OperatingHoursResponse.from(store.getOperatingHours())
         );
     }
 }
